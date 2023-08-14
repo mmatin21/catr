@@ -1,12 +1,18 @@
 
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
+
 
 export default function (props) {
   let [authMode, setAuthMode] = useState("signin")
 
+  const navigate = useNavigate();
+  const handleClick = () => {navigate('/landing');}
+
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
   }
+
 
   if (authMode === "signin") {
     return (
@@ -37,7 +43,7 @@ export default function (props) {
               />
             </div>
             <div className="d-grid gap-2 mt-3">
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary" onClick={handleClick}>
                 Submit
               </button>
             </div>
@@ -86,7 +92,7 @@ export default function (props) {
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary" onClick={handleClick}>
               Submit
             </button>
           </div>
